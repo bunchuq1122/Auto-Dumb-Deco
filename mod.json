@@ -1,0 +1,36 @@
+{
+	"geode": "5.0.1",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081"
+	},
+	"id": "bunchuq1122.auto-dumb-deco",
+	"name": "Auto Dumb Deco",
+	"version": "v1.0.0",
+	"developer": "Bunchuq1122",
+	"description": "Automatically decorates with RANDOM OBJECTS!",
+	"settings": {
+		"random_offset": {
+			"type": "bool",
+			"name": "random offset",
+			"default": false
+		},
+		"random_rotattion": {
+			"type": "bool",
+			"name": "random rotation",
+			"default": false
+		},
+		"Layer": {
+			"type": "int",
+			"name": "Layer",
+			"default": 1
+		}
+	},
+	"tags": [
+		"joke", "editor"
+	],
+	"links": {
+		"community": "https://github.com/bunchuq1122/Auto-Dumb-Deco",
+		"source": "https://github.com/bunchuq1122/Auto-Dumb-Deco"
+	}
+}
