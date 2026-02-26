@@ -6,24 +6,33 @@
 	},
 	"id": "bunchuq1122.auto-dumb-deco",
 	"name": "Auto Dumb Deco",
-	"version": "v1.0.0",
+	"version": "v1.1.0",
 	"developer": "Bunchuq1122",
 	"description": "Automatically decorates with RANDOM OBJECTS!",
 	"settings": {
 		"random_offset": {
 			"type": "bool",
 			"name": "random offset",
+			"description": "Decorates with offset decorations",
 			"default": false
 		},
-		"random_rotattion": {
+		"random_rotation": {
 			"type": "bool",
 			"name": "random rotation",
+			"description": "Decorates with randomly rotated decorations",
 			"default": false
 		},
 		"Layer": {
 			"type": "int",
 			"name": "Layer",
+			"description": "The editor layer of decorations",
 			"default": 1
+		},
+		"true_random": {
+			"type": "bool",
+			"name": "true random",
+			"description": "allow Portals, Pad, and etc",
+			"default": false
 		}
 	},
 	"tags": [
