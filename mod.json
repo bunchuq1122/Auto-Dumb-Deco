@@ -33,6 +33,27 @@
 			"name": "true random",
 			"description": "allow Portals, Pad, and etc",
 			"default": false
+		},
+		"random_color": {
+			"type": "bool",
+			"name": "random color",
+			"description": "Decorates with random colors",
+			"default": false
+		},
+		"random_color_range": {
+			"type": "int",
+			"name": "random color range",
+			"description": "range of randomized color",
+			"default": 1,
+			"enable-if": "random_color",
+			"max": 100,
+			"min": 1
+		},
+		"random_scale": {
+			"type": "bool",
+			"name": "random scale",
+			"description": "Decorates with randomly sized decorations",
+			"default": false
 		}
 	},
 	"tags": [

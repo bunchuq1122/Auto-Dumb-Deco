@@ -1,6 +1,7 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/EditorUI.hpp>
 #include <Geode/modify/LevelEditorLayer.hpp>
+#include <Geode/modify/GJSpriteColor.hpp>
 
 using namespace geode::prelude;
 
@@ -21,7 +22,7 @@ class $modify(decorator, LevelEditorLayer) {
         auto btn = CCMenuItemSpriteExtra::create(
             spr,
             this,
-            menu_selector(decorator::onRandomDecor)
+            menu_selector(decorator::onRandonDeco)
         );
 
 		auto mn = CCMenu::create();
@@ -29,7 +30,7 @@ class $modify(decorator, LevelEditorLayer) {
 		mn->setID(modId+"/decorate");
 		mn->setZOrder(100);
 
-        btn->setPosition({156.f, -42.f});
+        btn->setPosition({136.f, -62.f});
         mn->addChild(btn);
 		this->addChild(mn);
 
@@ -64,13 +65,13 @@ class $modify(decorator, LevelEditorLayer) {
             1829,1817,1818,1819,1814,1815,1816,18111,1812,1859,1751,1755,1736,1735,1734,1710,1709,1708,1707,1706,1705,1704,1700,
             1620,1619,1616,1615,1613,1612,1611,1595,1585,1586,1584,1520,
             1330,1331,1329,1334,1346,1347,
-            1268,1049,915,747,745,744,743,741,740,
+            1268,1049,1022,915,901,900,747,745,744,743,741,740,
             718,717,680,679,678,677,676,675,660,
             399,398,397,
             287,286,
             221,203,202,201,200,
             188,187,186,185,184,183,
-            141,140,
+            142,141,140,
             111,105,104,101,99,98,
             89,88,84,59,58,57,56,55,
             47,46,45,
@@ -82,7 +83,8 @@ class $modify(decorator, LevelEditorLayer) {
         return blockedIDs.contains(id);
     }
 
-    void onRandomDecor(CCObject*) {
+    void onRandonDeco(CCObject*) {
+        std::vector<GameObject*> createdObjects;
         
         auto editor = EditorUI::get();
         auto selected = editor->getSelectedObjects();
@@ -126,15 +128,34 @@ class $modify(decorator, LevelEditorLayer) {
                     continue;
 
                 newObj = editor->createObject(id, {pos.x, pos.y});
+                createdObjects.push_back(newObj);
             }
 
-            if (newObj && Mod::get()->getSettingValue<bool>("random_rotation")) {
+            if (newObj && Mod::get()->getSettingValue<bool>("random_rotation")) { 
+                newObj->setRotation(rand() % 360);
+            }
+            if (newObj && Mod::get()->getSettingValue<bool>("random_scale")) {
                 newObj->setScale(
                     0.5f + static_cast<float>(rand()) / RAND_MAX * 2.f
                 );
-                newObj->setRotation(rand() % 360);
             }
 			newObj->m_editorLayer= Mod::get()->getSettingValue<int>("Layer");
+            
+            auto randomCOlorRange = Mod::get()->getSettingValue<int>("random_color_range");
+            if (Mod::get()->getSettingValue<bool>("random_color")) {
+                newObj->m_baseColor->m_colorID = rand() % (randomCOlorRange);
+            }
+        }
+        if (this->m_editorUI) {
+
+            this->m_editorUI->onDeselectAll(nullptr);
+
+            for (auto obj : createdObjects) {
+                this->m_editorUI->m_selectedObjects->addObject(obj);
+                obj->m_isSelected = true;
+            }
+        
+            this->m_editorUI->updateButtons();
         }
     }
 };
