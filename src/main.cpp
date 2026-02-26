@@ -36,6 +36,20 @@ class $modify(decorator, LevelEditorLayer) {
 		return true;
     }
 
+    void onPlaytest() {
+        LevelEditorLayer::onPlaytest();
+        auto modId = Mod::get()->getID();
+		auto menu = this->getChildByID(modId+"/decorate");
+        menu->setVisible(false);
+    }
+
+    void onStopPlaytest() {
+        LevelEditorLayer::onStopPlaytest();
+        auto modId = Mod::get()->getID();
+		auto menu = this->getChildByID(modId+"/decorate");
+        menu->setVisible(true);
+    }
+
     bool checkObj(GameObject* obj) { 
         if (Mod::get()->getSettingValue<bool>("true_random")) return false;
         if (!obj) return true;

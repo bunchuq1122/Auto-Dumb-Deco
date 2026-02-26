@@ -4,3 +4,4 @@
 # v1.1.0
 - new option **True Random**
 - *random rotation* option fixed
+- Palette visibility fixed
