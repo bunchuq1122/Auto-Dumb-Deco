@@ -6,7 +6,7 @@
 - *random rotation* option fixed
 - Palette visibility fixed
 
-# v1.1.0
+# v1.1.1
 - new option **<u>Random Sclae</u>**
 - new option **<u>Random Color</u>**
 - filter fixed
