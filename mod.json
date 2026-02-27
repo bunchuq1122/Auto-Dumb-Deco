@@ -1,12 +1,12 @@
 {
-	"geode": "5.0.1",
+	"geode": "5.1.0",
 	"gd": {
 		"win": "2.2081",
 		"android": "2.2081"
 	},
 	"id": "bunchuq1122.auto-dumb-deco",
 	"name": "Auto Dumb Deco",
-	"version": "v1.1.0",
+	"version": "v1.1.1",
 	"developer": "Bunchuq1122",
 	"description": "Automatically decorates with RANDOM OBJECTS!",
 	"settings": {

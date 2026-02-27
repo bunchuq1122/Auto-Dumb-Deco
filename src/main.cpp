@@ -86,7 +86,7 @@ class $modify(decorator, LevelEditorLayer) {
     void onRandonDeco(CCObject*) {
         std::vector<GameObject*> createdObjects;
         
-        auto editor = EditorUI::get();
+        auto editor = this->m_editorUI;
         auto selected = editor->getSelectedObjects();
 
         if (!selected || selected->count() == 0) {
