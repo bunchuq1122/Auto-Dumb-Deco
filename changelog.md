@@ -7,8 +7,8 @@
 - <cg>Palette</c> <cj>visibility</c> fixed
 
 # v1.1.1
-- <cy>new option</c> **<u>Random Sclae</u>**
-- <cy>new option</c> **<u>Random Color</u>**
+- <cy>new option</c> **<cg>Random Sclae</c>**
+- <cy>new option</c> **<cr>Random Color</c>**
 - filter fixed
 
 # v1.1.2
