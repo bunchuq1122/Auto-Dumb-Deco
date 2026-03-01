@@ -34,21 +34,16 @@ class $modify(decorator, LevelEditorLayer) {
         mn->addChild(btn);
 		this->addChild(mn);
 
+        this->schedule(schedule_selector(decorator::loop),0.01f);
+
 		return true;
     }
 
-    void onPlaytest() {
-        LevelEditorLayer::onPlaytest();
-        auto modId = Mod::get()->getID();
-		auto menu = this->getChildByID(modId+"/decorate");
-        menu->setVisible(false);
-    }
-
-    void onStopPlaytest() {
-        LevelEditorLayer::onStopPlaytest();
-        auto modId = Mod::get()->getID();
-		auto menu = this->getChildByID(modId+"/decorate");
-        menu->setVisible(true);
+    void loop(float dt) {
+        auto editorUI = this->m_editorUI;
+        auto menu = editorUI->getChildByID("editor-buttons-menu");
+        auto anyBtn = menu->getChildByID("copy-paste-button");
+        this->getChildByID(Mod::get()->getID()+"/decorate")->setVisible(anyBtn->isVisible());
     }
 
     bool checkObj(GameObject* obj) { 
