@@ -4,9 +4,12 @@
 # v1.1.0
 - new option **<u>True Random</u>**
 - *random rotation* option fixed
-- Palette visibility fixed
+- <cg>Palette</c> <cj>visibility</c> fixed
 
 # v1.1.1
-- new option **<u>Random Sclae</u>**
-- new option **<u>Random Color</u>**
+- <cy>new option</c> **<u>Random Sclae</u>**
+- <cy>new option</c> **<u>Random Color</u>**
 - filter fixed
+
+# v1.1.2
+- <cg>Palette</c> <cj>visibility</c> synced with other buttons

@@ -5,7 +5,7 @@
 2. Click Palette
 3. and **Done**!
 
-***Customizable Settings***
+***<cy>Customizable Settings</c>***
 - **editor layer of decorations**
-- **Randomized Rotations**
-- **Randomized Scales**
+- **Randomized <cj>Rotations</c>**
+- **Randomized <cr>Scales</c>**
