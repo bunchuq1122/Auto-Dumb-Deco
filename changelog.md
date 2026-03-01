@@ -13,3 +13,6 @@
 
 # v1.1.2
 - <cg>Palette</c> <cj>visibility</c> synced with other buttons
+
+# v1.1.3
+- dependencies added
