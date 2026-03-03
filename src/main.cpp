@@ -39,11 +39,14 @@ class $modify(decorator, LevelEditorLayer) {
 		return true;
     }
 
-    void updateDrawDebug() {
+    void updateDebugDraw() {
+        LevelEditorLayer::updateDebugDraw();
         auto editorUI = this->m_editorUI;
         auto menu = editorUI->getChildByID("editor-buttons-menu");
         auto anyBtn = menu->getChildByID("copy-paste-button");
-        this->getChildByID(Mod::get()->getID()+"/decorate")->setVisible(anyBtn->isVisible());
+        auto btn = this->getChildByID(Mod::get()->getID()+"/decorate");
+        if(!btn || !anyBtn) return;
+        btn->setVisible(anyBtn->isVisible());
     }
 
     bool checkObj(GameObject* obj) { 
