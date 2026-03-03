@@ -16,3 +16,6 @@
 
 # v1.1.3
 - dependencies added
+
+# v1.1.4
+- use UpdateDebugDraw instead of schedule

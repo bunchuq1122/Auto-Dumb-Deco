@@ -34,12 +34,12 @@ class $modify(decorator, LevelEditorLayer) {
         mn->addChild(btn);
 		this->addChild(mn);
 
-        this->schedule(schedule_selector(decorator::loop),0.01f);
+        // this->schedule(schedule_selector(decorator::loop),0.01f);
 
 		return true;
     }
 
-    void loop(float dt) {
+    void updateDrawDebug() {
         auto editorUI = this->m_editorUI;
         auto menu = editorUI->getChildByID("editor-buttons-menu");
         auto anyBtn = menu->getChildByID("copy-paste-button");
