@@ -19,3 +19,6 @@
 
 # v1.1.4
 - use UpdateDebugDraw instead of schedule
+
+# v1.1.5
+- use geode::utils::random instead of ancient rand() stuff

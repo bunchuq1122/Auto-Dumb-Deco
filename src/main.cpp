@@ -2,15 +2,12 @@
 #include <Geode/modify/EditorUI.hpp>
 #include <Geode/modify/LevelEditorLayer.hpp>
 #include <Geode/modify/GJSpriteColor.hpp>
+#include <Geode/utils/coro.hpp>
 
 using namespace geode::prelude;
 
 #include <ctime>
 #include <unordered_set>
-
-$on_mod(Loaded) {
-    srand(static_cast<unsigned>(time(nullptr)));
-}
 
 class $modify(decorator, LevelEditorLayer) {
     bool init(GJGameLevel* level, bool noUI) {
@@ -30,7 +27,7 @@ class $modify(decorator, LevelEditorLayer) {
 		mn->setID(modId+"/decorate");
 		mn->setZOrder(100);
 
-        btn->setPosition({136.f, -62.f});
+        btn->setPosition({136.f, -57.f});
         mn->addChild(btn);
 		this->addChild(mn);
 
@@ -99,12 +96,12 @@ class $modify(decorator, LevelEditorLayer) {
             int minID = 1;
 			int maxID = 1911;
 
-			int id = minID + rand() % (maxID - minID + 1);
+			int id = geode::utils::random::generate<int>(minID, maxID);
 			float offsetX = 0;
             float offsetY = 0;
 			if (Mod::get()->getSettingValue<bool>("random_offset")) {
-				float offsetX = rand() % 80 - 40;
-            	float offsetY = rand() % 80 - 40;
+				float offsetX = geode::utils::random::generate<int>(-40,40);
+            	float offsetY = geode::utils::random::generate<int>(-40,40);
 			}
 
             GameObject* newObj = nullptr;
@@ -114,7 +111,7 @@ class $modify(decorator, LevelEditorLayer) {
             while (!newObj && attempts < 100) {
                 attempts++;
 
-                int id = minID + rand() % (maxID - minID + 1);
+                int id = geode::utils::random::generate<int>(minID,maxID);
 
                 if (checkObjByID(id))
                     continue;
@@ -130,18 +127,18 @@ class $modify(decorator, LevelEditorLayer) {
             }
 
             if (newObj && Mod::get()->getSettingValue<bool>("random_rotation")) { 
-                newObj->setRotation(rand() % 360);
+                newObj->setRotation(geode::utils::random::generate<int>(0,360));
             }
             if (newObj && Mod::get()->getSettingValue<bool>("random_scale")) {
                 newObj->setScale(
-                    0.5f + static_cast<float>(rand()) / RAND_MAX * 2.f
+                    geode::utils::random::generate<float>(0.4f,2.5f)
                 );
             }
 			newObj->m_editorLayer= Mod::get()->getSettingValue<int>("Layer");
             
             auto randomCOlorRange = Mod::get()->getSettingValue<int>("random_color_range");
             if (Mod::get()->getSettingValue<bool>("random_color")) {
-                newObj->m_baseColor->m_colorID = rand() % (randomCOlorRange);
+                newObj->m_baseColor->m_colorID = geode::utils::random::generate<int>(0,randomCOlorRange);
             }
         }
         if (this->m_editorUI) {
